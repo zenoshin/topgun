@@ -11,6 +11,9 @@ int main()
 		{
 			if(sf::Event::Closed == event.type)
 				window.close();
+
+			window.clear();
+			window.display();
 		}
 	}
 
