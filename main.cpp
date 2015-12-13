@@ -2,7 +2,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200,200), "Project Topgun");
+	sf::RenderWindow window(sf::VideoMode(640,480), "Project Topgun");
 
 	sf::Font font;
 	if(false == font.loadFromFile("waltographUI.ttf"))
