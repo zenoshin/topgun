@@ -17,7 +17,7 @@ public:
 	void draw(sf::RenderWindow& window);
 
 private:
-	sf::Text frameRateText;
+	sf::Text m_text;
 	sf::Clock clock;
 	sf::Uint32 frameCount;
 
