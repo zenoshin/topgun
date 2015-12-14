@@ -3,7 +3,7 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(640,480), "Project Topgun");
+	sf::RenderWindow window(sf::VideoMode(800,600), "Project Topgun");
 
 	sf::Font font;
 	if(false == font.loadFromFile("waltographUI.ttf"))
@@ -11,7 +11,7 @@ int main()
 	sf::Text frameRateText;
 	frameRateText.setFont(font);
 	frameRateText.setString("-fps");
-	frameRateText.setCharacterSize(12);
+	frameRateText.setCharacterSize(20);
 	sf::Clock clock;
 	sf::Uint32 frameCount = 0;
 
@@ -33,7 +33,7 @@ int main()
 			clock.restart();
 			frameCount = 0;
 		}
-		frameRateText.setOrigin(frameRateText.getLocalBounds().width + 3, 0);
+		frameRateText.setOrigin(frameRateText.getLocalBounds().width + 6, 0);
 		frameRateText.setPosition(window.getSize().x + 1, 1);
 		frameRateText.setColor(sf::Color(0, 0, 0, 128));
 		window.draw(frameRateText);
