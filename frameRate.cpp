@@ -9,7 +9,7 @@
 #include <string>
 
 FrameRate::FrameRate(const sf::Font& font)
-: frameCount(0)
+: m_frameCount(0)
 {
 	m_text.setFont(font);
 	m_text.setString("-fps");
@@ -18,15 +18,15 @@ FrameRate::FrameRate(const sf::Font& font)
 
 void FrameRate::draw(sf::RenderWindow& window)
 {
-	++frameCount;
+	++m_frameCount;
 	if(m_clock.getElapsedTime().asSeconds() >= 1.f)
 	{
-		m_text.setString(std::to_string(frameCount) + "fps");
+		m_text.setString(std::to_string(m_frameCount) + "fps");
 		m_text.setOrigin(m_text.getLocalBounds().width + 6, 0);
-		m_text.setColor(frameCount >= 30 ? sf::Color::Green :
-				frameCount >= 10 ? sf::Color::Yellow : sf::Color::Red);
+		m_text.setColor(m_frameCount >= 30 ? sf::Color::Green :
+				m_frameCount >= 10 ? sf::Color::Yellow : sf::Color::Red);
 		m_clock.restart();
-		frameCount = 0;
+		m_frameCount = 0;
 	}
 
 	drawShadow(window);
