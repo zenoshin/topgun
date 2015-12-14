@@ -22,12 +22,12 @@ void FrameRate::draw(sf::RenderWindow& window)
 	if(clock.getElapsedTime().asSeconds() >= 1.f)
 	{
 		frameRateText.setString(std::to_string(frameCount) + "fps");
+		frameRateText.setOrigin(frameRateText.getLocalBounds().width + 6, 0);
 		frameRateText.setColor(frameCount >= 30 ? sf::Color::Green :
 				frameCount >= 10 ? sf::Color::Yellow : sf::Color::Red);
 		clock.restart();
 		frameCount = 0;
 	}
-	frameRateText.setOrigin(frameRateText.getLocalBounds().width + 6, 0);
 	const unsigned int windowWidth = window.getSize().x;
 	frameRateText.setPosition(windowWidth + 1, 1);
 	const auto orgColor = frameRateText.getColor();
