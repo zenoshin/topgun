@@ -12,7 +12,6 @@ int main()
 	frameRateText.setFont(font);
 	frameRateText.setString("-fps");
 	frameRateText.setCharacterSize(12);
-	frameRateText.setColor(sf::Color::White);
 	sf::Clock clock;
 	sf::Uint32 frameCount = 0;
 
@@ -25,7 +24,7 @@ int main()
 				window.close();
 		}
 
-		window.clear();
+		window.clear(sf::Color::White);
 
 		++frameCount;
 		if(clock.getElapsedTime().asSeconds() >= 1.f)
@@ -34,8 +33,12 @@ int main()
 			clock.restart();
 			frameCount = 0;
 		}
-		frameRateText.setOrigin(frameRateText.getLocalBounds().width, 0);
+		frameRateText.setOrigin(frameRateText.getLocalBounds().width + 3, 0);
+		frameRateText.setPosition(window.getSize().x + 1, 1);
+		frameRateText.setColor(sf::Color(0, 0, 0, 128));
+		window.draw(frameRateText);
 		frameRateText.setPosition(window.getSize().x, 0);
+		frameRateText.setColor(sf::Color(224, 224, 224, 255));
 		window.draw(frameRateText);
 
 		window.display();
