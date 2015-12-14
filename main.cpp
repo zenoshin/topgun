@@ -4,6 +4,7 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800,600), "Project Topgun");
+	window.setVerticalSyncEnabled(true);
 
 	sf::Font font;
 	if(false == font.loadFromFile("waltographUI.ttf"))
