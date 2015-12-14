@@ -28,12 +28,22 @@ void FrameRate::draw(sf::RenderWindow& window)
 		clock.restart();
 		frameCount = 0;
 	}
-	const unsigned int windowWidth = window.getSize().x;
-	frameRateText.setPosition(windowWidth + 1, 1);
+
+	drawShadow(window);
+	drawText(window);
+}
+
+void FrameRate::drawShadow(sf::RenderWindow& window)
+{
+	frameRateText.setPosition(window.getSize().x + 1, 1);
 	const auto orgColor = frameRateText.getColor();
 	frameRateText.setColor(sf::Color(0, 0, 0, 128));
 	window.draw(frameRateText);
 	frameRateText.setColor(orgColor);
-	frameRateText.setPosition(windowWidth, 0);
+}
+
+void FrameRate::drawText(sf::RenderWindow& window)
+{
+	frameRateText.setPosition(window.getSize().x, 0);
 	window.draw(frameRateText);
 }

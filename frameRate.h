@@ -20,6 +20,9 @@ private:
 	sf::Text frameRateText;
 	sf::Clock clock;
 	sf::Uint32 frameCount;
+
+	void drawShadow(sf::RenderWindow& window);
+	void drawText(sf::RenderWindow& window);
 };
 
 #endif /* FRAMERATE_H_ */
