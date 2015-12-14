@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <string>
 
 int main()
 {
@@ -12,6 +13,8 @@ int main()
 	frameRateText.setString("-fps");
 	frameRateText.setCharacterSize(12);
 	frameRateText.setColor(sf::Color::White);
+	sf::Clock clock;
+	sf::Uint32 frameCount = 0;
 
 	while(window.isOpen())
 	{
@@ -20,13 +23,20 @@ int main()
 		{
 			if(sf::Event::Closed == event.type)
 				window.close();
-
-			window.clear();
-
-			window.draw(frameRateText);
-
-			window.display();
 		}
+
+		window.clear();
+
+		++frameCount;
+		if(clock.getElapsedTime().asSeconds() >= 1.f)
+		{
+			frameRateText.setString(std::to_string(frameCount) + "fps");
+			clock.restart();
+			frameCount = 0;
+		}
+		window.draw(frameRateText);
+
+		window.display();
 	}
 
 	return 0;
