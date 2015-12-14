@@ -34,6 +34,8 @@ int main()
 			clock.restart();
 			frameCount = 0;
 		}
+		frameRateText.setOrigin(frameRateText.getLocalBounds().width, 0);
+		frameRateText.setPosition(window.getSize().x, 0);
 		window.draw(frameRateText);
 
 		window.display();
