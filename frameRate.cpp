@@ -19,13 +19,13 @@ FrameRate::FrameRate(const sf::Font& font)
 void FrameRate::draw(sf::RenderWindow& window)
 {
 	++frameCount;
-	if(clock.getElapsedTime().asSeconds() >= 1.f)
+	if(m_clock.getElapsedTime().asSeconds() >= 1.f)
 	{
 		m_text.setString(std::to_string(frameCount) + "fps");
 		m_text.setOrigin(m_text.getLocalBounds().width + 6, 0);
 		m_text.setColor(frameCount >= 30 ? sf::Color::Green :
 				frameCount >= 10 ? sf::Color::Yellow : sf::Color::Red);
-		clock.restart();
+		m_clock.restart();
 		frameCount = 0;
 	}
 

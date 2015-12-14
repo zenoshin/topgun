@@ -18,7 +18,7 @@ public:
 
 private:
 	sf::Text m_text;
-	sf::Clock clock;
+	sf::Clock m_clock;
 	sf::Uint32 frameCount;
 
 	void drawShadow(sf::RenderWindow& window);
