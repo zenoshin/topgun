@@ -12,6 +12,12 @@ int main()
 
 	FrameRate frameRate(font);
 
+	sf::Texture pcTexture;
+	pcTexture.loadFromFile("Biplane.png");
+	sf::Sprite pc;
+	pc.setTexture(pcTexture);
+	pc.setScale(0.1f, 0.1f);
+
 	while(window.isOpen())
 	{
 		sf::Event event;
@@ -24,6 +30,8 @@ int main()
 		window.clear(sf::Color::White);
 
 		frameRate.draw(window);
+
+		window.draw(pc);
 
 		window.display();
 	}
