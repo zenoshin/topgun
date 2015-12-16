@@ -17,6 +17,9 @@ int main()
 	sf::Sprite pc;
 	pc.setTexture(pcTexture);
 	pc.setScale(0.1f, 0.1f);
+	const auto pcBound = pc.getLocalBounds();
+	pc.setOrigin(pcBound.width / 2.f, pcBound.height / 2.f);
+	pc.setPosition(pc.getGlobalBounds().width, window.getSize().y / 2);
 
 	while(window.isOpen())
 	{
