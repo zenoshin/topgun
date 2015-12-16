@@ -13,7 +13,8 @@ int main()
 	FrameRate frameRate(font);
 
 	sf::Texture pcTexture;
-	pcTexture.loadFromFile("Biplane.png");
+	if(false == pcTexture.loadFromFile("Biplane.png"))
+		return -1;
 	sf::Sprite pc;
 	pc.setTexture(pcTexture);
 	pc.setScale(0.1f, 0.1f);
