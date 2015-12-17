@@ -22,8 +22,11 @@ int main()
 	pc.setOrigin(pcBound.width / 2.f, pcBound.height / 2.f);
 	pc.setPosition(pc.getGlobalBounds().width, window.getSize().y / 2);
 
+	sf::Clock clock;
 	while(window.isOpen())
 	{
+		auto elapsedTime = clock.restart();
+
 		sf::Event event;
 		while(window.pollEvent(event))
 		{
@@ -40,7 +43,7 @@ int main()
 			move.y -= 1;
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			move.y += 1;
-		pc.move(move);
+		pc.move(move * 100.f * elapsedTime.asSeconds());
 
 		window.clear(sf::Color::White);
 
