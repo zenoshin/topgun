@@ -31,6 +31,17 @@ int main()
 				window.close();
 		}
 
+		sf::Vector2f move(0, 0);
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			move.x -= 1;
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			move.x += 1;
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			move.y -= 1;
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			move.y += 1;
+		pc.move(move);
+
 		window.clear(sf::Color::White);
 
 		frameRate.draw(window);
