@@ -28,30 +28,42 @@ int main()
 		auto elapsedTime = clock.restart();
 
 		sf::Event event;
+		static bool focused = true;
 		while(window.pollEvent(event))
 		{
 			if(sf::Event::Closed == event.type)
 				window.close();
+
+			if(sf::Event::LostFocus == event.type)
+				focused = false;
+
+			if(sf::Event::GainedFocus == event.type)
+				focused = true;
 		}
 
-		sf::Vector2f move(0, 0);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			move.x -= 1;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			move.x += 1;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			move.y -= 1;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			move.y += 1;
-		pc.move(move * 100.f * elapsedTime.asSeconds());
+		if(focused)
+		{
+			sf::Vector2f move(0, 0);
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				move.x -= 1;
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				move.x += 1;
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				move.y -= 1;
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				move.y += 1;
+			pc.move(move * 100.f * elapsedTime.asSeconds());
 
-		window.clear(sf::Color::White);
+			window.clear(sf::Color::White);
 
-		frameRate.draw(window);
+			frameRate.draw(window);
 
-		window.draw(pc);
+			window.draw(pc);
 
-		window.display();
+			window.display();
+		}
+		else
+			sf::sleep(sf::milliseconds(100));
 	}
 
 	return 0;
