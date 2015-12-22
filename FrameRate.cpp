@@ -5,8 +5,8 @@
  *      Author: myung
  */
 
-#include "frameRate.h"
 #include <string>
+#include "FrameRate.h"
 
 FrameRate::FrameRate(const sf::Font& font)
 : m_frameCount(0)
