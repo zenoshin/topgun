@@ -9,10 +9,10 @@
 
 bool Player::init(float centerY)
 {
-	if(false == pcTexture.loadFromFile("Biplane.png"))
+	if(false == texture.loadFromFile("Biplane.png"))
 		return false;
 
-	pc.setTexture(pcTexture);
+	pc.setTexture(texture);
 	pc.setScale(0.1f, 0.1f);
 	const auto pcBound = pc.getLocalBounds();
 	pc.setOrigin(pcBound.width / 2.f, pcBound.height / 2.f);

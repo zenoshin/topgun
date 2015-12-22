@@ -17,7 +17,7 @@ public:
 	void update(float elapsedSeconds);
 
 private:
-	sf::Texture pcTexture;
+	sf::Texture texture;
 	sf::Sprite pc;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
