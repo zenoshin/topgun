@@ -18,7 +18,7 @@ public:
 
 private:
 	sf::Texture texture;
-	sf::Sprite pc;
+	sf::Sprite sprite;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 };
