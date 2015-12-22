@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "frameRate.h"
+#include "Player.h"
 
 int main()
 {
@@ -12,15 +13,9 @@ int main()
 
 	FrameRate frameRate(font);
 
-	sf::Texture pcTexture;
-	if(false == pcTexture.loadFromFile("Biplane.png"))
+	Player player;
+	if(false == player.init(window.getSize().y / 2))
 		return -1;
-	sf::Sprite pc;
-	pc.setTexture(pcTexture);
-	pc.setScale(0.1f, 0.1f);
-	const auto pcBound = pc.getLocalBounds();
-	pc.setOrigin(pcBound.width / 2.f, pcBound.height / 2.f);
-	pc.setPosition(pc.getGlobalBounds().width, window.getSize().y / 2);
 
 	sf::Clock clock;
 	while(window.isOpen())
@@ -43,22 +38,13 @@ int main()
 
 		if(focused)
 		{
-			sf::Vector2f move(0, 0);
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-				move.x -= 1;
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-				move.x += 1;
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-				move.y -= 1;
-			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-				move.y += 1;
-			pc.move(move * 100.f * elapsedTime.asSeconds());
+			player.update(elapsedTime.asSeconds());
 
 			window.clear(sf::Color::White);
 
 			frameRate.draw(window);
 
-			window.draw(pc);
+			window.draw(player);
 
 			window.display();
 		}
