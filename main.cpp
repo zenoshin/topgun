@@ -1,6 +1,7 @@
 #include <fstream>
 #include <SFML/Graphics.hpp>
-#include "frameRate.h"
+
+#include "FrameRate.h"
 #include "Player.h"
 
 int main()
