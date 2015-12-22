@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "frameRate.h"
+#include "Player.h"
 
 int main()
 {
@@ -12,20 +13,43 @@ int main()
 
 	FrameRate frameRate(font);
 
+	Player player;
+	if(false == player.init(window.getSize().y / 2))
+		return -1;
+
+	sf::Clock clock;
 	while(window.isOpen())
 	{
+		auto elapsedTime = clock.restart();
+
 		sf::Event event;
+		static bool focused = true;
 		while(window.pollEvent(event))
 		{
 			if(sf::Event::Closed == event.type)
 				window.close();
+
+			if(sf::Event::LostFocus == event.type)
+				focused = false;
+
+			if(sf::Event::GainedFocus == event.type)
+				focused = true;
 		}
 
-		window.clear(sf::Color::White);
+		if(focused)
+		{
+			player.update(elapsedTime.asSeconds());
 
-		frameRate.draw(window);
+			window.clear(sf::Color::White);
 
-		window.display();
+			frameRate.draw(window);
+
+			window.draw(player);
+
+			window.display();
+		}
+		else
+			sf::sleep(sf::milliseconds(100));
 	}
 
 	return 0;
