@@ -1,9 +1,13 @@
+#include <fstream>
 #include <SFML/Graphics.hpp>
 #include "frameRate.h"
 #include "Player.h"
 
 int main()
 {
+	std::ofstream logFile("log.txt");
+	sf::err().rdbuf(logFile.rdbuf());
+
 	sf::RenderWindow window(sf::VideoMode(800,600), "Project Topgun");
 	window.setVerticalSyncEnabled(true);
 
